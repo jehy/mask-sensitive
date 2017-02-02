@@ -16,10 +16,10 @@ var
   password='very sensitive data',
   masked=mask(password,{mode:'secure'})
 ```
-## Arguments
-```js
-/**
- * @param data{string} string for masking
- * @param [options]{Object} modes: secure (replace with "***"), length(replace with equal number of "*") and half (mask 1/4 of start and 1/4 of end);
- */
-```
+## Modes
+
+* secure - return "***"
+* length - return equal to length number of "*"
+* half - mask first and last 1/4
+* every - mask every third char
+* middle - mask middle with "***"

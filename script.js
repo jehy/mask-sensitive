@@ -31,6 +31,14 @@ var maskEvery = function (data) {
   return data.join('');
 };
 
+
+var maskMiddle = function (data) {
+  if (data.length < 4)
+    return maskSecure(data);
+  var quarter = data.length / 4;
+  return data.substr(0, quarter) + '***' + data.substr(3 * quarter);
+};
+
 var maskSecure = function (data) {
   return '***';
 };
@@ -57,6 +65,9 @@ var mask = function (data, options) {
   }
   if (options.mode === 'every') {
     return maskEvery(maskMe);
+  }
+  if (options.mode === 'middle') {
+    return maskMiddle(maskMe);
   }
   else//if(options.mode==='secure')
     return maskSecure(maskMe);

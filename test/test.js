@@ -52,4 +52,14 @@ describe('maskSensitive', function () {
   });
 
 
+  it('should mask with middle mode', function (done) {
+    var data = 'sensitive data';
+    var masked = mask(data, {mode: 'middle'});
+    if (masked !== 'sen***data')
+      done('Not masked with middle mode!');
+    else
+      done();
+  });
+
+
 });
