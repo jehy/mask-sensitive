@@ -1,0 +1,23 @@
+{
+  "name": "mask-sensitive",
+  "version": "0.0.1",
+  "description": "mask sensitive data",
+  "keywords": [
+    "data",
+    "mask",
+    "password"
+  ],
+  "main": "script.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jehy/mask-sensitive.git"
+  },
+  "author": "Jehy",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
