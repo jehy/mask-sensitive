@@ -8,22 +8,16 @@ var maskLen = function (data) {
 };
 
 var maskHalf = function (data) {
-
-  if (data.length < 4)
-    return maskLen(data);
-  var i;
   var maskNum = data.length / 4;
   data = data.split('');
-  for (i = 0; i < maskNum; i++)
+  for (var i = 0; i < maskNum; i++) {
     data[i] = '*';
-  for (i = 0; i < maskNum; i++)
     data[data.length - i - 1] = '*';
+  }
   return data.join('');
 };
 
 var maskEvery = function (data) {
-  if (data.length < 3)
-    return maskSecure(data);
 
   data = data.split('');
   for (var i = 0; i < data.length / 3; i++)
@@ -33,8 +27,6 @@ var maskEvery = function (data) {
 
 
 var maskMiddle = function (data) {
-  if (data.length < 4)
-    return maskSecure(data);
   var quarter = data.length / 4;
   return data.substr(0, quarter) + '***' + data.substr(3 * quarter);
 };
@@ -52,6 +44,8 @@ var mask = function (data, options) {
   if (typeof data !== 'string') {
     maskMe = JSON.stringify(data);
   }
+  if (data===null || data.length < 4)
+    return maskSecure(data);
   if (options === undefined)
     options = {};
   if (options.mode === undefined)

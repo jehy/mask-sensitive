@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jehy/mask-sensitive.svg?branch=master)](https://travis-ci.org/jehy/mask-sensitive)
 
-Masks sensitive data with several options
+Masks sensitive data with several different methods.
 
 ##Installation
 ```bash
@@ -12,14 +12,20 @@ npm install mask-sensitive
 ##Usage
 ```js
 var
-  mask          = require('mask-sensitive'),
-  password='very sensitive data',
-  masked=mask(password,{mode:'secure'})
+  mask = require('mask-sensitive'),
+  password = 'very sensitive data',
+  masked = mask(password, {mode: 'secure'});
 ```
 ## Modes
 
-* secure - return "***"
-* length - return equal to length number of "*"
-* half - mask first and last 1/4
-* every - mask every third char
-* middle - mask middle with "***"
+* `secure` - return "***";
+* `length` - return equal to length number of "*";
+* `half` - mask first and last 1/4;
+* `every` - mask every third char;
+* `middle` - replace middle with "***";
+
+By default, `secure` method is used.
+
+##Important
+* All data less then 4 chars will be masked with `secure` mode;
+* null is masked as ***.
