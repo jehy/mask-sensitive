@@ -44,7 +44,7 @@ var mask = function (data, options) {
   if (typeof data !== 'string') {
     maskMe = JSON.stringify(data);
   }
-  if (data===null || data.length < 4)
+  if (data === null || data === undefined || data.length < 4)
     return maskSecure(data);
   if (options === undefined)
     options = {};
