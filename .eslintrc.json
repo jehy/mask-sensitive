@@ -1,0 +1,36 @@
+{
+  "env": {
+    "browser": false,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "airbnb-base/legacy",
+  "plugins": [
+    "standard",
+    "promise"
+  ],
+  "rules": {
+    "one-var": "off",
+    "no-param-reassign": "off",
+    "func-names": "off",
+    "indent": "off",
+    "padded-blocks": "off",
+    "no-plusplus": "off",
+    "arrow-spacing": "off",
+    "object-curly-spacing": "off",
+    "prefer-const": "warn",
+    "no-unused-vars": "warn",
+    "object-shorthand": "warn",
+    "no-console": "warn",
+    "no-multi-spaces": "off",
+    "no-mixed-operators": "off",
+    "max-len": [
+      "error",
+      140
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ]
+  }
+}
