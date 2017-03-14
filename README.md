@@ -1,6 +1,9 @@
 #Mak sensitive
 
 [![Build Status](https://travis-ci.org/jehy/mask-sensitive.svg?branch=master)](https://travis-ci.org/jehy/mask-sensitive)
+[![Coverage Status](https://coveralls.io/repos/github/jehy/mask-sensitive/badge.svg?branch=master)](https://coveralls.io/github/jehy/mask-sensitive?branch=master)
+[![dependencies Status](https://david-dm.org/jehy/mask-sensitive/status.svg)](https://david-dm.org/jehy/mask-sensitive)
+[![devDependencies Status](https://david-dm.org/jehy/mask-sensitive/dev-status.svg)](https://david-dm.org/jehy/mask-sensitive?type=dev)
 
 Masks sensitive data with several different methods.
 
