@@ -1,15 +1,15 @@
 'use strict';
 
-var maskLen = function (data) {
+function maskLen(data) {
   var i;
   var str = '';
   for (i = 0; i < data.length; i++) {
     str += '*';
   }
   return str;
-};
+}
 
-var maskHalf = function (data) {
+function maskHalf(data) {
   var i;
   var maskNum = data.length / 4;
   data = data.split('');
@@ -18,9 +18,9 @@ var maskHalf = function (data) {
     data[data.length - i - 1] = '*';
   }
   return data.join('');
-};
+}
 
-var maskEvery = function (data) {
+function maskEvery(data) {
   var i;
 
   data = data.split('');
@@ -28,35 +28,35 @@ var maskEvery = function (data) {
     data[i * 3] = '*';
   }
   return data.join('');
-};
+}
 
 
-var maskMiddle = function (data) {
+function maskMiddle(data) {
   var quarter = data.length / 4;
   return data.substr(0, quarter) + '***' + data.substr(3 * quarter);
-};
+}
 
-var maskSecure = function (data) {
+function maskSecure() {
   return '***';
-};
+}
 /**
  * @param data{string} string for masking
  * @param [options]{Object} modes: secure (replace with "***"),
  * length(replace with equal number of "*") and half (mask 1/4 of start and 1/4 of end);
  */
 
-var mask = function (data, options) {
+function mask(data, options) {
   var maskMe = data;
   if (typeof data !== 'string') {
     maskMe = JSON.stringify(data);
   }
   if (data === null || data === undefined || data.length < 4) {
-    return maskSecure(data);
+    return maskSecure();
   }
-  if (options === undefined) {
+  if (!options) {
     options = {};
   }
-  if (options.mode === undefined) {
+  if (!options.mode) {
     options.mode = 'secure';
   }
 
@@ -72,7 +72,7 @@ var mask = function (data, options) {
   if (options.mode === 'middle') {
     return maskMiddle(maskMe);
   }
-  return maskSecure(maskMe);
-};
+  return maskSecure();
+}
 
 module.exports = mask;

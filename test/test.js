@@ -1,141 +1,78 @@
 'use strict';
 
 var mask = require('../script');
+var assert = require('chai').assert;
 
 describe('maskSensitive', function () {
 
-  it('should mask without params', function (done) {
+  it('should mask without params', function () {
     var data = 'sensitive';
     var masked = mask(data);
-    if (masked !== '***') {
-      done('not masked without params!');
-    } else done();
+    assert.equal(masked, '***');
   });
 
 
-  it('should mask objects', function (done) {
+  it('should mask objects', function () {
     var data = {smth: 'sensitive'};
     var masked = mask(data);
-    if (masked !== '***') {
-      done('object not masked!');
-    } else done();
+    assert.equal(masked, '***');
   });
 
 
-  it('should mask with length mode', function (done) {
+  it('should mask with length mode', function () {
     var data = 'sensitive data';
     var masked = mask(data, {mode: 'length'});
-    if (masked !== '**************') {
-      done('Not masked with length!');
-    } else done();
+    assert.equal(masked, '**************');
   });
 
 
-  it('should mask with half mode', function (done) {
+  it('should mask with half mode', function () {
     var data = 'sensitive data';
     var masked = mask(data, {mode: 'half'});
-    if (masked !== '****itive ****') {
-      done('Not masked with half mode!');
-    } else {
-      done();
-    }
-
+    assert.equal(masked, '****itive ****');
   });
 
-  it('should mask with every mode', function (done) {
+  it('should mask with every mode', function () {
     var data = 'sensitive data';
     var masked = mask(data, {mode: 'every'});
-    if (masked !== '*en*it*ve*da*a') {
-      done('Not masked with half mode!');
-    } else {
-      done();
-    }
+    assert.equal(masked, '*en*it*ve*da*a');
   });
 
 
-  it('should mask with middle mode', function (done) {
+  it('should mask with middle mode', function () {
     var data = 'sensitive data';
     var masked = mask(data, {mode: 'middle'});
-    if (masked !== 'sen***data') {
-      done('Not masked with middle mode!');
-    } else {
-      done();
-    }
+    assert.equal(masked, 'sen***data');
   });
 
 
-  it('should mask null values', function (done) {
+  it('should mask null values', function () {
     var data = null;
     var masked = mask(data, {mode: 'middle'});
-    if (masked !== '***') {
-      done('Not masked with middle mode! (result was ' + masked + ')');
-      return;
-    }
+    assert.equal(masked, '***');
 
     masked = mask(data, {mode: 'every'});
-    if (masked !== '***') {
-      done('Not masked with every mode! (result was ' + masked + ')');
-      return;
-    }
+    assert.equal(masked, '***');
     masked = mask(data, {mode: 'secure'});
-    if (masked !== '***') {
-      done('Not masked with secure mode! (result was ' + masked + ')');
-      return;
-    }
+    assert.equal(masked, '***');
     masked = mask(data, {mode: 'half'});
-    if (masked !== '***') {
-      done('Not masked with half mode! (result was ' + masked + ')');
-      return;
-    }
+    assert.equal(masked, '***');
     masked = mask(data, {mode: 'length'});
-    if (masked !== '***') {
-      done('Not masked with length mode! (result was ' + masked + ')');
-      return;
-    }
-    done();
+    assert.equal(masked, '***');
   });
 
-
-  it('should mask with middle mode', function (done) {
-    var data = 'sensitive data';
-    var masked = mask(data, {mode: 'middle'});
-    if (masked !== 'sen***data') {
-      done('Not masked with middle mode!');
-    } else {
-      done();
-    }
-  });
-
-
-  it('should mask less then three chars with ***', function (done) {
+  it('should mask less then three chars with ***', function () {
     var data = 'a';
     var masked = mask(data, {mode: 'middle'});
-    if (masked !== '***') {
-      done('Not masked with middle mode! (result was ' + masked + ')');
-      return;
-    }
-
+    assert.equal(masked, '***');
     masked = mask(data, {mode: 'every'});
-    if (masked !== '***') {
-      done('Not masked with every mode! (result was ' + masked + ')');
-      return;
-    }
+    assert.equal(masked, '***');
     masked = mask(data, {mode: 'secure'});
-    if (masked !== '***') {
-      done('Not masked with secure mode! (result was ' + masked + ')');
-      return;
-    }
+    assert.equal(masked, '***');
     masked = mask(data, {mode: 'half'});
-    if (masked !== '***') {
-      done('Not masked with half mode! (result was ' + masked + ')');
-      return;
-    }
+    assert.equal(masked, '***');
     masked = mask(data, {mode: 'length'});
-    if (masked !== '***') {
-      done('Not masked with length mode! (result was ' + masked + ')');
-      return;
-    }
-    done();
+    assert.equal(masked, '***');
   });
 
 

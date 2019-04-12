@@ -3,9 +3,11 @@ node_js:
   - "0.10"
   - "0.12"
   - "4"
-  - "5"
   - "6"
-  - "node"
-  - "iojs"
+  - "7"
+  - "8"
+  - "9"
+  - "10"
+  - "11"
 after_success:
   - npm run coverage && npm run coveralls
